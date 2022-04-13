@@ -7,9 +7,9 @@ const Shop_44 = class Shop_44 {
         this.id = id;
         this.name = name;
         this.cat_id = cat_id;
+        this.price = price;
         this.remote_url = remote_url;
         this.local_url = local_url;
-        this.price = price;
 
     }
 
@@ -41,8 +41,8 @@ const Shop_44 = class Shop_44 {
 }
 
 const test = async () => {
-    let result = await Shop_44.fetchProductByCategory(1);
-    console.log('test results', JSON.stringify(result));
+    let results = await Shop_44.fetchProductByCategory(0);
+    console.log('test results', JSON.stringify(results));
 }
 
 test();

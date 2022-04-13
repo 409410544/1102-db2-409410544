@@ -33,12 +33,4 @@ const Category_44 = class Category_44 {
     }
 }
 
-const test = async() => {
-
-    let results = await Category_44.fetchAll();
-    console.log('result',JSON.stringify(results.rows));
-}
-
-test();
-
 module.exports = Category_44;
