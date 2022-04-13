@@ -6,7 +6,7 @@ var router = express.Router();
 /* GET home page. */
 router.get('/', function(req, res, next) {
   try {
-      let results = await Category_44.fetchAll();
+     /* let results = await Category_44.fetchAll();*/
       console.log('result',JSON.stringify(results));
       res.render('crown2_44/index', {
 
@@ -25,11 +25,10 @@ router.get('/shop_44/:category',async function(req, res){
   console.log('category',req.params.category);
 
   try{
-    const cid = await category_44.fetchCatIdByName(req.params.category);
+    const cid = await Category_44.fetchCatIdByName(req.params.category);
     console.log('cid',cid);
-
-      let result = await Shop_44.fetchProductByCategory(cid);
-  console.log('result',JSON.stringify(results));
+    let results = await Shop_44.fetchProductByCategory(cid);
+    console.log('results',JSON.stringify(results));
 
   }catch(err){
     console.log(err);

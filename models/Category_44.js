@@ -16,13 +16,21 @@ const Category_44 = class Category_44 {
     static async fetchAll(){
 
             try {
-                let results = await db.query(`SELECT * from category_xx`);
+                let results = await db.query(`SELECT * from category_44`);
                 return results.rows;
             } catch (err){
                 console.log('error',err);
             }
     }
+    static async fetchCatIdByName(name){
+        try{
+            let results = await db.query(`SELECT * from category_44 where name = $1`, [name])
+            return results.rows[0].id;
+        }catch(err){
+            console.log('error',err);
+        }
 
+    }
 }
 
 const test = async() => {
