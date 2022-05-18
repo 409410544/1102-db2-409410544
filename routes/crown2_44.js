@@ -1,45 +1,14 @@
 var express = require('express');
-const Category_44 = require('../models/Category_44');
-const Shop_44 = require('../models/Shop_44');
 var router = express.Router();
 
+const category_44 = require('../models/category_44');
+const shop_44 = require('../models/shop_44');
+
+
+const crown2Controller_44 = require('../controllers/crown2Controller_44');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  try {
-     /* let results = await Category_44.fetchAll();*/
-      console.log('result',JSON.stringify(results));
-      res.render('crown2_44/index', {
 
-        data: results,
-        id:'409410544',
-        title:'crown2'
-      });
-  }catch(err){
-    console.log(err);
-  }
+router.get('/', crown2Controller_44.getCategories);
+router.get('/shop_44/:category',crown2Controller_44.getProductsByCategory);
 
-
-});
- 
-router.get('/shop_44/:category',async function(req, res){
-  console.log('category',req.params.category);
-
-  try{
-    const cid = await Category_44.fetchCatIdByName(req.params.category);
-    console.log('cid',cid);
-    let results = await Shop_44.fetchProductByCategory(cid);
-    console.log('results',JSON.stringify(results));
-
-    res.render('crown2_44/products_44',{
-      data: results,
-      title: req.params.category,
-      name: '李鴻君',
-      id: '409410544'
-    });
-
-  }catch(err){
-    console.log(err);
-  }
-
-});
 module.exports = router;

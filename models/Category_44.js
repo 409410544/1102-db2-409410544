@@ -1,6 +1,6 @@
 const db = require('../utils/database');
 
-const Category_44 = class Category_44 {
+const category_44 = class category_44 {
  
     constructor(id, name, size, remote_url, local_url, link_url ){
 
@@ -33,4 +33,4 @@ const Category_44 = class Category_44 {
     }
 }
 
-module.exports = Category_44;
+module.exports = category_44;

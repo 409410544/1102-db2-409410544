@@ -1,6 +1,6 @@
 const db = require('../utils/database');
 
-const Shop_44 = class Shop_44 {
+const shop_44 = class shop_44 {
  
     constructor(id, name, cat_id , price, remote_url, local_url){
 
@@ -23,7 +23,7 @@ const Shop_44 = class Shop_44 {
             }
     }
 
-    static async fetchProductByCategory(id){
+    static async fetchProductByCategory(id){    
         const query = {
             text: `SELECT * from shop_44 where cat_id =$1`,
             values: [id]
@@ -40,11 +40,6 @@ const Shop_44 = class Shop_44 {
 
 }
 
-const test = async () => {
-    let results = await Shop_44.fetchProductByCategory(0);
-    console.log('test results', JSON.stringify(results));
-}
 
-test();
 
-module.exports = Shop_44;
+module.exports = shop_44;
