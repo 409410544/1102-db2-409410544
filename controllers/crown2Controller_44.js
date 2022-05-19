@@ -7,7 +7,7 @@ exports.createProducts = async(req, res)=>{
 console.log('body',req.body);
 res.json({ msg: 'create -- body data received' });
 };
-r
+
 //READ
 
 exports.getCategories = async (req,res) => {
