@@ -1,3 +1,4 @@
+const res = require('express/lib/response');
 const category_44 = require('../models/Category_44');
 const shop_44 = require('../models/Shop_44');
 
@@ -5,7 +6,19 @@ const shop_44 = require('../models/Shop_44');
 //CREATE
 exports.createProducts = async(req, res)=>{
 console.log('body',req.body);
-res.json({ msg: 'create -- body data received' });
+try{
+
+  let results = await shop_44.create(req.body);
+  console.log('results',JSON.stringify(results));
+  res.json({ 
+    msg: 'create -- body data received',
+    data: results,
+  
+  });
+}catch(err){
+    console.log('err',err);
+}
+
 };
 
 //READ
@@ -46,6 +59,44 @@ exports.getProductsByCategory = async (req,res) => {
           console.log(err);
         }
       };
+
+
+//UPDATE 
+exports.updateProduct = async(req,res) => {
+
+  console.log('body',req.body);
+  try{
+    let results = await shop_44.update(req.body);
+    res.json({
+      msg:'Update successful',
+      data: results,
+    })
+
+  }catch(err){
+    console.log('err',err)
+  }
+
+
+}
+
+
+//DELETE
+
+exports.deleteProduct = async (req, res) => {
+
+    console.log('delete id',req.params.id);
+
+    try{
+      const results = await shop_44.deleteById(req.params.id);
+      res.json({
+        msg:'Deletion Successful',
+        data: results,
+      });
+    }catch(err){
+      console.log(err);
+    }
+
+}
 
 
 
