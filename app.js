@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 
 const crown_44_Router = require ('./routes/crown_44')
 const crown2_44_Router = require ('./routes/crown2_44')
-
+const book_44_Router = require ('./routes/book_44')
 
 
 var app = express();
@@ -28,6 +28,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/crown_44', crown_44_Router )
 app.use('/crown2_44', crown2_44_Router )
+app.use('/book_44', book_44_Router )
 
 
 
