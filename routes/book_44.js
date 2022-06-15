@@ -10,7 +10,7 @@ router.get('/',  async (req, res) => {
  
     try{
         const results = await db.query('SELECT * FROM book_44');
-        console.log('results',JSON.stringify(results.rows));
+       // console.log('results',JSON.stringify(results.rows));
         res.render('book_44/index', { 
             data: results.rows,
             id: '409410544',
@@ -41,7 +41,7 @@ router.get('/create',   (req, res) => {
 
 router.post('/create', async(req, res) => {
 
-    console.log('body',req.body);
+ console.log('body',req.body);
     const id = req.body.id;
     const name = req.body.name;
     const author = req.body.author;
@@ -61,6 +61,22 @@ router.post('/create', async(req, res) => {
 });
 
 
+//DELETE
+
+router.get('/delete/:id',async(req,res)=> {
+    try{
+        console.log('delete id',req.params.id);
+        const query = {
+            text:`DELETE FROM book_44 WHERE id = $1;`,
+            values: [req.params.id]
+        }
+    await db.query(query);
+    res.redirect('/book_44');
+    }catch(err){
+        console.log(err);
+    }
+
+});
 
 
 
