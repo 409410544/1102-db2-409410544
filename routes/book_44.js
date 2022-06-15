@@ -36,6 +36,28 @@ router.get('/create',   (req, res) => {
     
 });
 
+router.get('/edit/:id',async(req,res) =>{
+    const id = req.params.id;
+    console.log('id',id);
+    try{
+        const query = {
+            text:`SELECT * FROM book_44 WHERE id = $1;`,
+            values:[id]
+        }
+        const results = await db.query(query);
+        data = results.rows;
+        res.render('book_44/edit_44',{
+            id:data[0].id,
+            name:data[0].name,
+            author:data[0].author,
+            price:data[0].price
+
+        });
+    }catch(err){
+        console.log(err);
+    }
+
+});
 
 //CREATE
 
@@ -60,6 +82,23 @@ router.post('/create', async(req, res) => {
     }
 });
 
+//UPDATE
+
+router.post('/update',async(req,res)=>{
+try{
+    const query = {
+        text:`UPDATE book_44 SET name = $1,author = $2, price = $3 WHERE id = $4;`,
+        values:[req.body.name,req.body.author,req.body.price,req.body.id],
+    };
+    await db.query(query);
+    res.redirect('/book_44');
+}catch(err){
+    console.log(err);
+}
+
+
+
+})
 
 //DELETE
 
@@ -77,6 +116,8 @@ router.get('/delete/:id',async(req,res)=> {
     }
 
 });
+
+
 
 
 
